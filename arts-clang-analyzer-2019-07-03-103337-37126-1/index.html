@@ -1,0 +1,181 @@
+<html>
+<head>
+<title>clang-analyze - scan-build results</title>
+<link type="text/css" rel="stylesheet" href="scanview.css"/>
+<script src="sorttable.js"></script>
+<script language='javascript' type="text/javascript">
+function SetDisplay(RowClass, DisplayVal)
+{
+  var Rows = document.getElementsByTagName("tr");
+  for ( var i = 0 ; i < Rows.length; ++i ) {
+    if (Rows[i].className == RowClass) {
+      Rows[i].style.display = DisplayVal;
+    }
+  }
+}
+
+function CopyCheckedStateToCheckButtons(SummaryCheckButton) {
+  var Inputs = document.getElementsByTagName("input");
+  for ( var i = 0 ; i < Inputs.length; ++i ) {
+    if (Inputs[i].type == "checkbox") {
+      if(Inputs[i] != SummaryCheckButton) {
+        Inputs[i].checked = SummaryCheckButton.checked;
+        Inputs[i].onclick();
+      }
+    }
+  }
+}
+
+function returnObjById( id ) {
+    if (document.getElementById)
+        var returnVar = document.getElementById(id);
+    else if (document.all)
+        var returnVar = document.all[id];
+    else if (document.layers)
+        var returnVar = document.layers[id];
+    return returnVar;
+}
+
+var NumUnchecked = 0;
+
+function ToggleDisplay(CheckButton, ClassName) {
+  if (CheckButton.checked) {
+    SetDisplay(ClassName, "");
+    if (--NumUnchecked == 0) {
+      returnObjById("AllBugsCheck").checked = true;
+    }
+  }
+  else {
+    SetDisplay(ClassName, "none");
+    NumUnchecked++;
+    returnObjById("AllBugsCheck").checked = false;
+  }
+}
+</script>
+<!-- SUMMARYENDHEAD -->
+</head>
+<body>
+<h1>clang-analyze - scan-build results</h1>
+
+<table>
+<tr><th>User:</th><td>u237002@apple161</td></tr>
+<tr><th>Working Directory:</th><td>/Users/u237002/Hacking/arts-build/clang-analyze</td></tr>
+<tr><th>Command Line:</th><td>make -j10 arts</td></tr>
+<tr><th>Clang Version:</th><td>clang version 8.0.0 (tags/RELEASE_800/final)
+</td></tr>
+<tr><th>Date:</th><td>Wed Jul  3 10:33:37 2019</td></tr>
+</table>
+<h2>Bug Summary</h2><table>
+<thead><tr><td>Bug Type</td><td>Quantity</td><td class="sorttable_nosort">Display?</td></tr></thead>
+<tr style="font-weight:bold"><td class="SUMM_DESC">All Bugs</td><td class="Q">27</td><td><center><input type="checkbox" id="AllBugsCheck" onClick="CopyCheckedStateToCheckButtons(this);" checked/></center></td></tr>
+<tr><th>Dead store</th><th colspan=2></th></tr>
+<tr><td class="SUMM_DESC">Dead assignment</td><td class="Q">14</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_dead_store_dead_assignment');" checked/></center></td></tr>
+<tr><th>Logic error</th><th colspan=2></th></tr>
+<tr><td class="SUMM_DESC">Assigned value is garbage or undefined</td><td class="Q">4</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_logic_error_assigned_value_is_garbage_or_undefined');" checked/></center></td></tr>
+<tr><td class="SUMM_DESC">Dereference of null pointer</td><td class="Q">1</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_logic_error_dereference_of_null_pointer');" checked/></center></td></tr>
+<tr><td class="SUMM_DESC">Result of operation is garbage or undefined</td><td class="Q">2</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_logic_error_result_of_operation_is_garbage_or_undefined');" checked/></center></td></tr>
+<tr><td class="SUMM_DESC">Uninitialized argument value</td><td class="Q">1</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_logic_error_uninitialized_argument_value');" checked/></center></td></tr>
+<tr><td class="SUMM_DESC">Unix API</td><td class="Q">2</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_logic_error_unix_api');" checked/></center></td></tr>
+<tr><th>Memory error</th><th colspan=2></th></tr>
+<tr><td class="SUMM_DESC">Use of zero allocated</td><td class="Q">1</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_memory_error_use_of_zero_allocated');" checked/></center></td></tr>
+<tr><td class="SUMM_DESC">Use-after-free</td><td class="Q">2</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_memory_error_use-after-free');" checked/></center></td></tr>
+</table>
+<h2>Reports</h2>
+
+<table class="sortable" style="table-layout:automatic">
+<thead><tr>
+  <td>Bug Group</td>
+  <td class="sorttable_sorted">Bug Type<span id="sorttable_sortfwdind">&nbsp;&#x25BE;</span></td>
+  <td>File</td>
+  <td>Function/Method</td>
+  <td class="Q">Line</td>
+  <td class="Q">Path Length</td>
+  <td class="sorttable_nosort"></td>
+  <!-- REPORTBUGCOL -->
+</tr></thead>
+<tbody>
+<tr class="bt_logic_error_assigned_value_is_garbage_or_undefined"><td class="DESC">Logic error</td><td class="DESC">Assigned value is garbage or undefined</td><td>src/linerecord.cc</td><td class="DESC">ReadFromArtscat5Stream</td><td class="Q">3007</td><td class="Q">33</td><td><a href="report-28ef21.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-28ef21.html" -->
+</tr>
+<tr class="bt_logic_error_assigned_value_is_garbage_or_undefined"><td class="DESC">Logic error</td><td class="DESC">Assigned value is garbage or undefined</td><td>3rdparty/Eigen/src/SparseCore/SparseMatrix.h</td><td class="DESC">insert</td><td class="Q">1183</td><td class="Q">34</td><td><a href="report-693841.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-693841.html" -->
+</tr>
+<tr class="bt_logic_error_assigned_value_is_garbage_or_undefined"><td class="DESC">Logic error</td><td class="DESC">Assigned value is garbage or undefined</td><td>src/m_oem.cc</td><td class="DESC">OEM</td><td class="Q">2028</td><td class="Q">23</td><td><a href="report-251b31.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-251b31.html" -->
+</tr>
+<tr class="bt_logic_error_assigned_value_is_garbage_or_undefined"><td class="DESC">Logic error</td><td class="DESC">Assigned value is garbage or undefined</td><td>src/linerecord.cc</td><td class="DESC">ReadFromArtscat5Stream</td><td class="Q">2999</td><td class="Q">32</td><td><a href="report-2bebcc.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-2bebcc.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>src/m_cloudradar.cc</td><td class="DESC">iyActiveSingleScat2</td><td class="Q">835</td><td class="Q">1</td><td><a href="report-5724e2.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-5724e2.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>src/linescaling.cc</td><td class="DESC">GetLineScalingData_dT</td><td class="Q">208</td><td class="Q">1</td><td><a href="report-da7c29.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-da7c29.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>src/montecarlo.cc</td><td class="DESC">mcPathTraceRadar</td><td class="Q">1228</td><td class="Q">1</td><td><a href="report-3e5838.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-3e5838.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>src/linescaling.cc</td><td class="DESC">GetLineScalingData_dT</td><td class="Q">192</td><td class="Q">1</td><td><a href="report-83d0e2.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-83d0e2.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>src/m_montecarlo.cc</td><td class="DESC">MCRadar</td><td class="Q">857</td><td class="Q">1</td><td><a href="report-16af80.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-16af80.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>src/telsem.cc</td><td class="DESC">interp_freq2</td><td class="Q">274</td><td class="Q">1</td><td><a href="report-fe8107.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-fe8107.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>src/legendre.cc</td><td class="DESC">gauss_legendre_tbl</td><td class="Q">4031</td><td class="Q">1</td><td><a href="report-a742b4.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-a742b4.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>src/telsem.cc</td><td class="DESC">interp_freq2</td><td class="Q">275</td><td class="Q">1</td><td><a href="report-73f405.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-73f405.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>src/montecarlo.cc</td><td class="DESC">mcPathTraceRadar</td><td class="Q">1231</td><td class="Q">1</td><td><a href="report-afc89b.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-afc89b.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>src/telsem.cc</td><td class="DESC">interp_freq2</td><td class="Q">281</td><td class="Q">1</td><td><a href="report-24b828.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-24b828.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>src/montecarlo.cc</td><td class="DESC">mcPathTraceRadar</td><td class="Q">1235</td><td class="Q">1</td><td><a href="report-8dc2de.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-8dc2de.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>src/m_cloudradar.cc</td><td class="DESC">iyActiveSingleScat2</td><td class="Q">832</td><td class="Q">1</td><td><a href="report-a1488f.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-a1488f.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>src/telsem.cc</td><td class="DESC">interp_freq2</td><td class="Q">284</td><td class="Q">1</td><td><a href="report-f805cc.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-f805cc.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>src/telsem.cc</td><td class="DESC">interp_freq2</td><td class="Q">276</td><td class="Q">1</td><td><a href="report-4f29a0.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-4f29a0.html" -->
+</tr>
+<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>3rdparty/Eigen/src/SparseCore/SparseMatrix.h</td><td class="DESC">reserveInnerVectors</td><td class="Q">347</td><td class="Q">47</td><td><a href="report-65ed4b.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-65ed4b.html" -->
+</tr>
+<tr class="bt_logic_error_result_of_operation_is_garbage_or_undefined"><td class="DESC">Logic error</td><td class="DESC">Result of operation is garbage or undefined</td><td>src/m_optproperties.cc</td><td class="DESC">pha_mat_sptFromMonoData</td><td class="Q">2699</td><td class="Q">27</td><td><a href="report-a4c267.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-a4c267.html" -->
+</tr>
+<tr class="bt_logic_error_result_of_operation_is_garbage_or_undefined"><td class="DESC">Logic error</td><td class="DESC">Result of operation is garbage or undefined</td><td>src/continua.cc</td><td class="DESC">specfct_</td><td class="Q">23822</td><td class="Q">40</td><td><a href="report-991bcd.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-991bcd.html" -->
+</tr>
+<tr class="bt_logic_error_uninitialized_argument_value"><td class="DESC">Logic error</td><td class="DESC">Uninitialized argument value</td><td>src/parser.cc</td><td class="DESC">set_gin_to_default</td><td class="Q">723</td><td class="Q">35</td><td><a href="report-04e34d.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-04e34d.html" -->
+</tr>
+<tr class="bt_logic_error_unix_api"><td class="DESC">Logic error</td><td class="DESC">Unix API</td><td>3rdparty/Eigen/src/SparseCore/SparseMatrix.h</td><td class="DESC">resize</td><td class="Q">639</td><td class="Q">27</td><td><a href="report-983a60.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-983a60.html" -->
+</tr>
+<tr class="bt_logic_error_unix_api"><td class="DESC">Logic error</td><td class="DESC">Unix API</td><td>3rdparty/Eigen/src/SparseCore/SparseMatrix.h</td><td class="DESC">resize</td><td class="Q">639</td><td class="Q">31</td><td><a href="report-569a10.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-569a10.html" -->
+</tr>
+<tr class="bt_memory_error_use_of_zero_allocated"><td class="DESC">Memory error</td><td class="DESC">Use of zero allocated</td><td>3rdparty/Eigen/src/SparseCore/SparseMatrix.h</td><td class="DESC">reserveInnerVectors</td><td class="Q">330</td><td class="Q">17</td><td><a href="report-4c23c3.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-4c23c3.html" -->
+</tr>
+<tr class="bt_memory_error_use-after-free"><td class="DESC">Memory error</td><td class="DESC">Use-after-free</td><td>src/libmicrohttpd/daemon.c</td><td class="DESC">MHD_cleanup_connections</td><td class="Q">1164</td><td class="Q">24</td><td><a href="report-902e5c.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-902e5c.html" -->
+</tr>
+<tr class="bt_memory_error_use-after-free"><td class="DESC">Memory error</td><td class="DESC">Use-after-free</td><td>3rdparty/Eigen/src/Core/DenseStorage.h</td><td class="DESC">data</td><td class="Q">565</td><td class="Q">69</td><td><a href="report-bdbc40.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-bdbc40.html" -->
+</tr>
+</tbody>
+</table>
+
+</body></html>
